@@ -22,16 +22,19 @@ function App() {
     <Router>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/addpost">Add Post</Link>
+      
         {!isAuth ? (
         <Link to="/login">Login</Link>
         ) : (
-        <button onClick={signUserOut}>Logout</button>
+          <>
+          <Link to="/addpost">Add Post</Link>
+          <button onClick={signUserOut}>Logout</button>
+        </>
       )}
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/addpost" element={<AddPost />} />
+        <Route path="/addpost" element={<AddPost isAuth={isAuth}/>} />
         <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
       </Routes>
     </Router>
